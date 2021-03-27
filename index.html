@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>Cycling Banner</title>
+     <script>
+         window.onload = initBannerLink;
+
+        var bannerImage = 0;
+        var bannerURL = new Array
+        ("https://www.dccomics.com/characters/superman", "https://www.dccomics.com/characters/batman", "https://www.dccomics.com/characters/the-flash", "https://www.dccomics.com/characters/wonder-woman", "https://www.dccomics.com/characters/green-lantern", "https://www.dccomics.com/characters/aquaman");
+        var bannerImages = new Array
+        ("superhero1.png","superhero2.png","superhero3.png","superhero4.png","superhero5.png","superhero6.png");
+
+        function initBannerLink()
+        {
+            if (document.getElementById("imageBanner").parentNode.tagName=="A")
+            {
+                document.getElementById("imageBanner").parentNode.onclick = newLocation;
+            }
+
+            rotate();
+        }
+
+        function newLocation()
+        {
+            document.location.href = bannerURL[bannerImage];
+            return false;
+        }
+
+        function rotate() {
+            bannerImage++;
+            if (bannerImage == bannerImages.length) {
+                bannerImage = 0;
+            }
+        document.getElementById("imageBanner").src = bannerImages[bannerImage];
+
+        setTimeout(rotate, 3 * 1000);
+        }
+     </script>
+     
+</head>
+<body>
+     <div class="centered">
+         <a>
+            <img src="images/reading1.gif" id="imageBanner" alt="Image Banner">
+         </a>
+     </div>
+</body>
+</html>
